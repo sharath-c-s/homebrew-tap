@@ -22,15 +22,16 @@ cask "herdnotch" do
         writable_base:  :appdir
   end
 
-  # Quitting runs the app's own shutdown, which turns lid-closed mode back off before the rule is removed.
-  uninstall quit:   "com.boringherd.HerdNotch",
-            delete: "/etc/sudoers.d/herdnotch-lidsleep"
+  # Quitting runs the app's own shutdown, which turns lid-closed mode back off. The lid-mode sudoers rule is
+  # only removed on zap (or from the app's Settings), so upgrades never need a password.
+  uninstall quit: "com.boringherd.HerdNotch"
 
-  zap trash: [
-    "~/Library/Caches/com.boringherd.HerdNotch",
-    "~/Library/Caches/HerdNotch",
-    "~/Library/Preferences/com.boringherd.HerdNotch.plist",
-  ]
+  zap delete: "/etc/sudoers.d/herdnotch-lidsleep",
+      trash:  [
+        "~/Library/Caches/com.boringherd.HerdNotch",
+        "~/Library/Caches/HerdNotch",
+        "~/Library/Preferences/com.boringherd.HerdNotch.plist",
+      ]
 
   caveats <<~EOS
     HerdNotch is not notarized. If macOS refuses to open it, run:
