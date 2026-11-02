@@ -1,6 +1,6 @@
 cask "herdnotch" do
-  version "0.1.7"
-  sha256 "9d7a0f22a1eddc829a97bef010285f907a34223ad3817dc455ad46672ed6ac0a"
+  version "0.1.8"
+  sha256 "6fff31f9738f43a85b0e8a639935ba322f8348a4b93baa3690396fda0a068f6d"
 
   url "https://github.com/sharath-c-s/herdnotch/releases/download/v#{version}/HerdNotch-#{version}.zip"
   name "HerdNotch"
